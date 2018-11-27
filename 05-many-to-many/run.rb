@@ -1,5 +1,7 @@
 require_relative "./user.rb"
 require_relative "./tweet.rb"
+require_relative "./like.rb"
+require 'pry'
 
 coffee_dad = User.new("Coffee Dad")
 tea_uncle = User.new("Tea Uncle")
@@ -24,4 +26,16 @@ tweet6 = coffee_dad.post_tweet("Need some more coffee")
 
 puts coffee_dad.tweets == [tweet1, tweet2, tweet3, tweet6]
 
-print Tweet.all
+tea_uncle.like_tweet(tweet1)
+tea_uncle.like_tweet(tweet2)
+coffee_dad.like_tweet(tweet4)
+puts tea_uncle.liked_tweets == [tweet1, tweet2]
+
+puts tweet2.likers == [tea_uncle]
+
+tea_uncle.like_tweet(tweet4)
+puts !tweet4.likers.include?(tea_uncle)
+
+# binding.pry
+
+"hi"
