@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_15_174818) do
+ActiveRecord::Schema.define(version: 2018_12_03_202350) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
-    t.string "pen_name"
+    t.datetime "birth_year"
   end
 
 end

@@ -1,5 +1,3 @@
-require_relative '../config/environment'
-
 class BackupAuthor
 
     attr_accessor :name, :id
@@ -9,76 +7,48 @@ class BackupAuthor
         @id = id
     end
 
-    def self.make_object_from_row(row)
-        # [1, "Mark Twain"]
-        Author.new(row[1], row[0])
-    end
-    
-    def self.create(name)
+   def self.create(name)
+        # create a new author
+        # save it to the database
+
         author = Author.new(name)
         author.save
-    end
+        author
+   end 
 
-    def self.find_by(name)
-        sql = <<-SQL
-            SELECT * from authors 
-            WHERE name LIKE ?
+   def save
+        sql = <<-SQL 
+            INSERT INTO authors (name) VALUES (?)
         SQL
-        results = DB.execute(sql, name)[0]
-        if results
-            Author.make_object_from_row(results)
-        else
-            return nil
-        end
-    end
+        DB.execute(sql, self.name)
+        sql = "SELECT last_insert_rowid()"
+        id = DB.execute(sql)[0][0]
+        self.id = id 
+   end
 
-    def self.find_or_create(name:)
-        author = Author.find_by(name)
-        author ||= Author.create(name)
-    end
+   def self.find(id)
+        # Author.find(2) => <Author @name="Maya Angelou">
 
-    def save
-        if self.id.nil?  # doesn't exist in the database yet
-            sql = <<-SQL
-                INSERT INTO authors (name)
-                VALUES (?)
-            SQL
-            DB.execute(sql, self.name)
-            sql = "SELECT last_insert_rowid()"
-            self.id = DB.execute(sql)[0][0]
-        else # just update the row in the db
-            sql = <<-SQL
-                UPDATE authors SET name = ? WHERE id = ?
-            SQL
-            DB.execute(sql, self.name, self.id)
-        end
-        self
-    end
-
-    def self.find(id)
-        sql = <<-SQL
-            SELECT * from authors WHERE id = ?
-        SQL
+        sql = "SELECT * FROM AUTHORS WHERE id = ?;"
         results = DB.execute(sql, id)
-        Author.make_object_from_row(results[0])
+        self.make_object_from_db_row(results[0])
+
+    end
+
+    def self.make_object_from_db_row(row)
+        Author.new(row[1], row[0])
     end
 
     def self.all
-        sql = <<-SQL
-            SELECT * from authors
-        SQL
+        sql = "SELECT * FROM AUTHORS"
         results = DB.execute(sql)
         results.map do |row|
-            Author.make_object_from_row(row)
+            self.make_object_from_db_row(row)
         end
     end
-    
+
     def delete
-        sql = <<-SQL
-            DELETE FROM authors WHERE id = ?
-        SQL
+        sql = "DELETE FROM authors WHERE id = ?"
         DB.execute(sql, self.id)
     end
-
-
 end
