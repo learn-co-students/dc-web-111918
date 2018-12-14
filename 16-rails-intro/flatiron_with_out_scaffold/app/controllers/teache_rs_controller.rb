@@ -1,0 +1,2 @@
+class TeacheRsController < ApplicationController
+end
