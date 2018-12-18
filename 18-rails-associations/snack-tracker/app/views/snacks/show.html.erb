@@ -4,8 +4,7 @@
 
 <div>Calories: <%= @snack.calories %></div>
 <div>Tastiness: <%= @snack.tastiness %></div>
-
-<!-- <a href="/snacks">Snacks Index Page</a> -->
+<div>Made by <%= link_to @snack.retailer.name, retailer_path(@snack.retailer) %></div>
 
 <%= form_tag @snack, method: "DELETE" do %>
     <%= submit_tag "Delete this snack" %>

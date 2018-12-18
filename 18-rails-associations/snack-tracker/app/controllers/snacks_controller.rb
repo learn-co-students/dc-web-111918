@@ -16,7 +16,6 @@ class SnacksController < ApplicationController
   def create
     @snack = Snack.create(strong_params)
     redirect_to @snack
-    # redirect_to snack_path(@snack)
   end
 
   def edit
@@ -36,7 +35,7 @@ class SnacksController < ApplicationController
   private
 
   def strong_params
-    params.require(:snack).permit(:name, :tastiness, :calories)
+    params.require(:snack).permit(:name, :tastiness, :calories, :retailer_id)
   end
 
   def find_snack

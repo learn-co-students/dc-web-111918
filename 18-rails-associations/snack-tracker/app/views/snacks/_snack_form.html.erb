@@ -5,5 +5,9 @@
     <%= f.number_field :calories %>
     <%= f.label :tastiness %>
     <%= f.select :tastiness, (1..10) %>
+   
+    <!-- collection_select(:post, :author_id, Author.all, :id, :name_with_initial, prompt: true) -->
+    <%= f.collection_select(:retailer_id, Retailer.all, :id, :name, prompt: true) %>
     <%= f.submit submit_text %>
 <% end %>
+
