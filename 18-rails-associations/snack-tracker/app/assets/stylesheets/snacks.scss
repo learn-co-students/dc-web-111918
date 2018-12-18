@@ -1,0 +1,12 @@
+// Place all the styles related to the Snacks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_snack {
+    background-color: pink;
+
+}
+
+.new_snack label[for="snack_tastiness"] {
+   font-weight: bold;
+}
