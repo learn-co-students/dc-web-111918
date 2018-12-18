@@ -16,6 +16,7 @@ class SnacksController < ApplicationController
   def create
     @snack = Snack.create(strong_params)
     redirect_to @snack
+    # redirect_to snack_path(@snack)
   end
 
   def edit
