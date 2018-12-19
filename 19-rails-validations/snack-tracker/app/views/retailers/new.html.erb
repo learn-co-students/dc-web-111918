@@ -1,0 +1,24 @@
+<h1>New Retailer</h1>
+
+<%= form_for @retailer do |r| %>
+    <%= r.label :name %>
+    <%= r.text_field :name %>
+    <%= r.label :year_established %>
+    <%= r.number_field :year_established %>
+
+    <h2>Snacks</h2>
+        <% 3.times do %>
+            <div>
+                <%= r.fields_for :snacks do |snack| %>
+                    <%= snack.label :name %>
+                    <%= snack.text_field :name %>
+                    <%= snack.label :calories %>
+                    <%= snack.number_field :calories %>
+                    <%= snack.label :tastiness %>
+                    <%= snack.select :tastiness, (1..10) %>
+                <% end %>
+            </div>
+        <% end %>
+
+    <%= r.submit "Create Retailer" %>
+<% end %>
