@@ -10,3 +10,16 @@
 .new_snack label[for="snack_tastiness"] {
    font-weight: bold;
 }
+
+.field_with_errors {
+    display: inline;
+}
+
+.field_with_errors label {
+    color: red;
+}
+
+.error_list {
+    list-style: square;
+    color: red;
+}
