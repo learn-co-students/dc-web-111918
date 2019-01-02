@@ -1,4 +1,8 @@
-<h1>Snacks Index Page</h1>
+<h1>Snacks Index Page for <%= current_user.username %></h1>
+
+
+<h2>The favorite cookie of <%= current_user.username %> is <%= cookies["my_favorite"] %></h2>
+<h2>The secret cookie of <%= current_user.username %> is <%= session["secret_favorite"] %></h2>
 
 <ul>
     <% @snacks.each do |snack| %>
