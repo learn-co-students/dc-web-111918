@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   def new
     # load login form
+    if current_user
+      redirect_to snacks_path
+    else
+      render :new
+    end
   end
 
   def create
@@ -8,11 +13,11 @@ class SessionsController < ApplicationController
     username = params[:username]
     @user = User.find_by(username: username)
 
-    if @user 
+    if @user && @user.authenticate(params[:password])
         cookies["current_user"] = username
         redirect_to snacks_path
     else
-        flash.notice = "No user found with that name"
+        flash.notice = "No user found with that name and password"
         redirect_to login_path
     end
   end
