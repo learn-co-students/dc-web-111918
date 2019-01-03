@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: username)
 
     if @user && @user.authenticate(params[:password])
-        cookies["current_user"] = username
+        session["user_id"] = @user.id
         redirect_to snacks_path
     else
         flash.notice = "No user found with that name and password"
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     # logs out user by deleting stored user cookie
-    cookies.delete("current_user")
+    session.delete("user_id")
     redirect_to login_path
   end
 end
