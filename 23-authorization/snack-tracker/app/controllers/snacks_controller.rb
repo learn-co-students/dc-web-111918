@@ -1,14 +1,17 @@
 class SnacksController < ApplicationController
 
   before_action :find_snack, only: [:show, :edit, :update, :destroy]
+  before_action :authorized, only: [:new, :create, :edit, :update]
 
   def index
-    @snacks = Snack.all
+    if current_user
+      @snacks = current_user.snacks
+    else
+      @snacks = Snack.all
+    end
   end
 
   def show
-    cookies["my_favorite"] = @snack.name
-    session["secret_favorite"] = "Oatmeal Raisin"
   end
 
   def new

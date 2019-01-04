@@ -13,4 +13,15 @@ class ApplicationController < ActionController::Base
             end
         end
     end
+
+    def logged_in?
+        !!current_user
+    end
+
+    def authorized
+        if !logged_in?
+            flash["notice"] = "You must be logged in"
+            redirect_to login_path
+        end
+    end
 end

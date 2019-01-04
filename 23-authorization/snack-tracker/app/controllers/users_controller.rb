@@ -15,6 +15,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_favorites
+    render :new_favorites
+  end
+
+  def create_favorites
+    snack_ids = params[:snack_ids]
+    snack_ids.each do |id|
+      new_snack = Snack.find(id)
+      if !current_user.snacks.include?(new_snack)
+        current_user.snacks << new_snack
+      end
+    end
+    redirect_to snacks_path
+  end
+
 
   private
 

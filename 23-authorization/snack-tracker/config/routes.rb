@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
+  get "/favorites", to: "users#new_favorites"
+  post "/favorites", to: "users#create_favorites"
 
 end
