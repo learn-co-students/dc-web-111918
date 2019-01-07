@@ -12,6 +12,7 @@ const types = {
   C: "Cold"
 };
 
+console.log("cereal data is loaded here");
 const cerealData = [
   {
     name: "100% Bran",

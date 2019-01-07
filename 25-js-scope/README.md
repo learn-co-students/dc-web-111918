@@ -2,6 +2,27 @@
 
 ![](https://media.giphy.com/media/sOGgevbtBDYKQ/giphy.gif)
 
+
+AKA using callbacks to do fancy stuffff
+
+## "First Class" functions
+- function within a function
+- assign a function to a variable
+```
+const myfunction = function () {
+  console.log('hello, world!')
+}
+
+const otherfunction = myfunction;
+```
+- parenthesis mean 'run this function'
+- without the parens - 'heres the function, do what you want with it'
+- add properties to the function
+- can be an object property
+- can return functions from other functions
+- can be passed as arguments
+- don't need to have a name (can be anonymous)
+
 ## Concepts
 
 - callbacks
