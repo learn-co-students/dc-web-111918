@@ -1,14 +1,14 @@
-# Scope and closures
+# Scope and Closures
 
 ![](https://media.giphy.com/media/sOGgevbtBDYKQ/giphy.gif)
 
 ## Concepts
 
-- Working with functions... that operate on functions!
-- map, filter, forEach
-- scope, closures
-- functions as variables
 - callbacks
+- map, filter, forEach
+- functions as variables
+- scope, closures
+- Working with functions... that operate on functions!
 
 ## Objectives
 
@@ -16,21 +16,21 @@ Let's learn about cereal.
 
 Goals:
 1. How many cereals in our data?
-2. How many different manufacturers?
-3. All cereals by a manufacturer
-4. Sort by highest rating
-5. Highest rated per manufacturer
-6. Sum of ratings
-7. Average rating
-8. Length of name
-9. Sorted by length of name
+2. All cereals by a manufacturer
+3. Sort by highest rating
+4. Highest rated per manufacturer
+5. Sum of ratings
+6. Average rating
+7. Length of name
+8. Sort by length of name
 
 Generalizing:
-- Filter by any key / value pair
-- Sort by a key
-- Average by a key
+- Sum by any key
+- Average by any key
+- Sort by any key
 - Highest by a key
 - Highest by a function
+- Filter by any key / value pair
 
 ### Variables scope
 
