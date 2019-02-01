@@ -56,6 +56,3 @@ let pigName = 'pig-name'
 let imageURL = require(`path/to/${pig-name}.jpg`)
 return <img src={imageURL} />
 ```
-part 1: https://youtu.be/IPiYjpcfbY0
-part 2: https://youtu.be/R6ocnRwLP3s
-part 3: https://youtu.be/Cdiqvw0xdkM
